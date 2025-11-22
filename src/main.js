@@ -24,6 +24,7 @@ async function init() {
 
     // Setup Host Specific UI
     if (isHost) {
+        const savedChannel = localStorage.getItem('sq_host_channel');
         document.getElementById('host-controls').style.display = 'block';
         if (savedChannel) {
             const connected = network.connectTwitch(savedChannel);

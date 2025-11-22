@@ -108,6 +108,11 @@
     display: none;
 }
 
+/* Hide chat messages when NOT in chat view (only show host console logs) */
+.host-console:not(.chat-view) #host-console-log .chat-line {
+    display: none;
+}
+
 .host-console-input-row {
     display: flex;
     align-items: center;

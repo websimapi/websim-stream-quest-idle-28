@@ -51,6 +51,12 @@ async function init() {
         // For regular users, always show chat view (input visible)
         if (!isHost) {
             hostConsole.classList.add('chat-view');
+
+            // Ensure the header label reads "Chat" for regular users
+            const toggleBtn = document.getElementById('host-console-toggle');
+            if (toggleBtn) {
+                toggleBtn.textContent = 'Chat';
+            }
         }
     }
 }

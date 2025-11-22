@@ -317,7 +317,8 @@ export class NetworkManager {
             type: 'chat_message',
             username,
             text,
-            ts: Date.now()
+            ts: Date.now(),
+            clientId: this.room.clientId
         });
     }
 }

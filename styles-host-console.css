@@ -92,6 +92,22 @@
     overflow-y: auto;
 }
 
+/* In chat view, treat log as a flex column so messages can sit at the bottom */
+.host-console.chat-view #host-console-log {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Spacer used to push chat lines to the bottom in chat view */
+.host-console.chat-view #host-console-log .chat-spacer {
+    flex: 1 1 auto;
+}
+
+/* Hide non-chat log lines when in chat view (only show chat messages) */
+.host-console.chat-view #host-console-log > :not(.chat-line):not(.chat-spacer) {
+    display: none;
+}
+
 .host-console-input-row {
     display: flex;
     align-items: center;

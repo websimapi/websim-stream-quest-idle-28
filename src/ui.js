@@ -397,11 +397,18 @@ export class UIManager {
 
         // Receive chat messages from network
         this.network.onChatMessage = (data) => {
+            // Skip rendering if this message originated from this client;
+            // we already rendered it optimistically.
+            if (this.network.room && data && data.clientId && data.clientId === this.network.room.clientId) {
+                return;
+            }
+
             const isSelf =
                 this.network.room &&
                 data &&
                 data.clientId &&
                 data.clientId === this.network.room.clientId;
+
             this.appendChatMessage({
                 username: data.username || 'Player',
                 text: data.text || '',
@@ -412,6 +419,17 @@ export class UIManager {
 
     appendChatMessage({ username, text, self }) {
         if (!this.chatLog || !text) return;
+
+        // Ensure bottom-aligned layout in chat view by inserting a spacer
+        if (this.hostConsoleContainer && this.hostConsoleContainer.classList.contains('chat-view')) {
+            let spacer = this.chatLog.querySelector('.chat-spacer');
+            if (!spacer) {
+                spacer = document.createElement('div');
+                spacer.className = 'chat-spacer';
+                this.chatLog.insertBefore(spacer, this.chatLog.firstChild);
+            }
+        }
+
         const line = document.createElement('div');
         line.className = 'chat-line' + (self ? ' self' : '');
         const userSpan = document.createElement('span');

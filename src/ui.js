@@ -436,7 +436,7 @@ export class UIManager {
         userSpan.className = 'chat-user';
         userSpan.textContent = `${username}:`;
         const msgSpan = document.createElement('span');
-        msgSpan.textContent = ` ${text}`;
+        msgSpan.textContent = text;
         line.appendChild(userSpan);
         line.appendChild(msgSpan);
         this.chatLog.appendChild(line);

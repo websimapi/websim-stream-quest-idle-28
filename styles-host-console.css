@@ -135,7 +135,7 @@
 
 .chat-line .chat-user {
     color: var(--primary);
-    margin-right: 4px;
+    margin-right: 2px;
 }
 
 .chat-line.self .chat-user {

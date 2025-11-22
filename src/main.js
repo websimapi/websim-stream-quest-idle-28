@@ -47,6 +47,11 @@ async function init() {
     const hostConsole = document.getElementById('host-console-container');
     if (hostConsole) {
         hostConsole.style.display = 'flex';
+
+        // For regular users, always show chat view (input visible)
+        if (!isHost) {
+            hostConsole.classList.add('chat-view');
+        }
     }
 }
 
